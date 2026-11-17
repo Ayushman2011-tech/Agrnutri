@@ -1,0 +1,6 @@
+{
+  "name": "AgriNutri Farm 2.0",
+  "description": "Smart Circular Farm-to-Consumer Ecosystem connecting Farmers, Producers, Retailers, and Consumers with AI insights, traceability, and sustainable marketplace.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
