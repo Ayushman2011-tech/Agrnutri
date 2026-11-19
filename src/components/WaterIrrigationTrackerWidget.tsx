@@ -182,12 +182,12 @@ export const WaterIrrigationTrackerWidget: React.FC = () => {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">
               <Droplets className="w-3.5 h-3.5 text-teal-400" />
-              <span>Smart Water Stewardship & Irrigation Module</span>
+              <span>Smart Water Stewardship &amp; Irrigation Module</span>
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
             </div>
 
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-              <span>Per-Zone Water Consumption & Sustainable Threshold Guard</span>
+              <span>Per-Zone Water Consumption &amp; Sustainable Threshold Guard</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-teal-100/90 leading-relaxed">

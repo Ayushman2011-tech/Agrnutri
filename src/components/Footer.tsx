@@ -1,228 +1,177 @@
 import React from 'react';
-import { Sprout, Heart, ShieldCheck, Phone, MapPin, Mail, Award, ExternalLink, Leaf } from 'lucide-react';
-import { FOUNDERS } from '../data/mockData';
+import { Sprout, Phone, MapPin, Mail, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
-  return (
-    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 transition-colors">
-      {/* Founders Spotlight Banner inside Footer */}
-      <div className="bg-slate-950/80 border-b border-slate-800/80 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-emerald-950/60 to-slate-900 p-6 rounded-2xl border border-emerald-900/50">
-            <div className="flex items-start sm:items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                <Award className="w-7 h-7" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs uppercase font-bold tracking-wider text-emerald-400">Leadership & Founders</span>
-                  <span className="text-slate-500">·</span>
-                  <span className="text-xs text-slate-400">Roots in Odisha, India</span>
-                </div>
-                <h3 className="text-lg font-bold text-white mt-0.5">
-                  Conceived & Led by Ayushman Panda & Gourav Soren
-                </h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
-                  Originating from the award-winning <strong className="text-emerald-300">AgriNutri V1.0 Prototype</strong>,
-                  Ayushman Panda (Sambalpur) and Gourav Soren (Mayurbhanj) designed AgriNutri Farm 2.0 to establish
-                  India’s foremost intelligent circular farm-to-consumer ecosystem.
-                </p>
-              </div>
-            </div>
+  const navigate = (tab: string) => {
+    setCurrentTab(tab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
+  return (
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
+        {/* Highlight CTA Banner */}
+        <div className="bg-gradient-to-r from-emerald-900/60 via-teal-900/50 to-slate-900 rounded-3xl p-6 sm:p-8 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>Circular Agritech Initiative · Odisha</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-white">
+              Empowering Farmers, Processors, Retailers &amp; Households
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Experience full QR farm-to-fork transparency, real-time IoT soil intelligence, and direct fair-trade harvests built in Odisha by Ayushman Panda &amp; Gourav Soren.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2.5 shrink-0">
             <button
-              onClick={() => {
-                setCurrentTab('founders');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="shrink-0 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg shadow-sm transition-all hover:scale-105"
+              onClick={() => navigate('marketplace')}
+              className="px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs shadow-lg transition-all flex items-center gap-2"
             >
-              Read Founders Story →
+              <span>Shop Marketplace</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => navigate('founders')}
+              className="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all"
+            >
+              Founders Story
             </button>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
-          {/* Brand Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Brand & Founders Attribution */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
                 <Sprout className="w-5 h-5" />
               </div>
-              <span className="font-extrabold text-xl text-white tracking-tight">
-                AgriNutri <span className="text-emerald-400">Farm 2.0</span>
+              <span className="font-black text-lg text-white tracking-tight">
+                AgriNutri Farm 2.0
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-              From Smart Farming to Trusted Food. An intelligent agricultural ecosystem bridging Farmers,
-              Producers/Processors, Retailers, and Consumers with real-time AI guidance, transparent QR batch
-              provenance, circular waste upcycling, and fair-trade marketplace economics.
+              From Smart Farming to Trusted Food. Conceived by Ayushman Panda (Sambalpur) and
+              Gourav Soren (Mayurbhanj) in Odisha to connect farmers, processors, retailers, and
+              consumers with verified laboratory provenance and direct fair-trade commerce.
             </p>
-            <div className="pt-2 flex flex-wrap gap-2 text-[11px] text-slate-400">
-              <span className="inline-flex items-center gap-1 bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                Zero Chemical Residue Verified
-              </span>
-              <span className="inline-flex items-center gap-1 bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">
-                <Leaf className="w-3.5 h-3.5 text-emerald-400" />
-                NPOP / FSSAI Aligned
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-800/60 text-[11px] font-semibold text-emerald-300">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>NPOP &amp; FSSAI Aligned · 0.00 ppm Assay Ledger</span>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Platform Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Platform</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-white mb-3.5">Platform</h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('marketplace');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors"
-                >
+                <button onClick={() => navigate('marketplace')} className="hover:text-emerald-400 transition-colors">
                   Natural Farm Marketplace
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('orders');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
-                >
-                  <span>Your Orders & Shipment Tracking</span>
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded font-bold">Live</span>
+                <button onClick={() => navigate('orders')} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                  <span>Your Orders &amp; Tracking</span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Live</span>
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('smart-farming');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors"
-                >
-                  Smart Farming & Weather
+                <button onClick={() => navigate('logistics')} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                  <span>Logistics Optimizer</span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold">New</span>
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('tutorials');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
-                >
-                  <span>Farmer Video Academy</span>
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded font-bold">New</span>
+                <button onClick={() => navigate('smart-farming')} className="hover:text-emerald-400 transition-colors">
+                  Smart Farming &amp; Weather
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('sustainability');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors"
-                >
-                  Sustainability Intelligence
+                <button onClick={() => navigate('tutorials')} className="hover:text-emerald-400 transition-colors">
+                  Farmer Video Academy
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('pricing');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors"
-                >
-                  Membership & Pricing
+                <button onClick={() => navigate('sustainability')} className="hover:text-emerald-400 transition-colors">
+                  Sustainability Score
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setCurrentTab('founders');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-emerald-400 transition-colors"
-                >
-                  Founders & Origin Story
+                <button onClick={() => navigate('pricing')} className="hover:text-emerald-400 transition-colors">
+                  Membership &amp; Pricing
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Ecosystem Portals */}
+          {/* Workspaces */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Dashboards</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-white mb-3.5">Communities</h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <span className="hover:text-emerald-400 cursor-pointer" onClick={() => setCurrentTab('dashboard')}>
+                <button onClick={() => navigate('dashboard')} className="hover:text-emerald-400 transition-colors">
                   Farmer Cultivation Hub
-                </span>
+                </button>
               </li>
               <li>
-                <span className="hover:text-emerald-400 cursor-pointer" onClick={() => setCurrentTab('dashboard')}>
+                <button onClick={() => navigate('dashboard')} className="hover:text-emerald-400 transition-colors">
                   Producer Processing Unit
-                </span>
+                </button>
               </li>
               <li>
-                <span className="hover:text-emerald-400 cursor-pointer" onClick={() => setCurrentTab('dashboard')}>
+                <button onClick={() => navigate('dashboard')} className="hover:text-emerald-400 transition-colors">
                   Retailer Wholesale Portal
-                </span>
+                </button>
               </li>
               <li>
-                <span className="hover:text-emerald-400 cursor-pointer" onClick={() => setCurrentTab('dashboard')}>
+                <button onClick={() => navigate('dashboard')} className="hover:text-emerald-400 transition-colors">
                   Consumer Nutrition Cart
-                </span>
+                </button>
               </li>
               <li>
-                <span className="hover:text-emerald-400 cursor-pointer" onClick={() => setCurrentTab('dashboard')}>
-                  Administrator Oversight
-                </span>
+                <button onClick={() => navigate('dashboard')} className="hover:text-emerald-400 transition-colors">
+                  Administrator Console
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Support */}
+          {/* Contact & Hubs */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Odisha Hubs & Helpline</h4>
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-white mb-3.5">Odisha Hubs</h4>
             <div className="space-y-2.5 text-xs text-slate-400">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Sambalpur Innovation Lab & Mayurbhanj Bio-Venture Center, Odisha</span>
+                <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Sambalpur Innovation Lab &amp; Mayurbhanj Bio-Venture Center, Odisha</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Kisan Helpline: 1800-180-1551 (Toll Free)</span>
+                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span className="font-mono">1800-180-1551</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span>support@agrinutrifarm.org</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Sub-bar */}
-        <div className="mt-12 pt-6 border-t border-slate-800 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 AgriNutri Farm 2.0. Conceived with pride by Ayushman Panda & Gourav Soren.</p>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-slate-800 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© 2026 AgriNutri Farm 2.0 · Ayushman Panda &amp; Gourav Soren, Odisha.</p>
+          <div className="flex items-center gap-5">
+            <span>Privacy Policy</span>
             <span>·</span>
-            <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
+            <span>Terms of Service</span>
             <span>·</span>
-            <span className="hover:text-slate-400 cursor-pointer">Traceability Ledger</span>
+            <span>Traceability Ledger</span>
           </div>
         </div>
       </div>

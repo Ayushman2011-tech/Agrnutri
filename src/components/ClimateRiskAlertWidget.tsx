@@ -226,7 +226,7 @@ export const ClimateRiskAlertWidget: React.FC = () => {
             </div>
 
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-              <span>Hyper-Local Frost, Heavy Rain & Drought Warnings</span>
+              <span>Hyper-Local Frost, Heavy Rain &amp; Drought Warnings</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">

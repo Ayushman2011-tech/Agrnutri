@@ -77,10 +77,10 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors selection:bg-emerald-500 selection:text-white">
       {/* Toast Notification Banner */}
       {notification && (
-        <div className="fixed top-20 right-4 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl border border-emerald-500/40 flex items-center gap-2 animate-in slide-in-from-top-2 duration-200">
+        <div className="fixed top-20 right-4 z-50 bg-slate-900 dark:bg-emerald-950 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl border border-emerald-500/40 flex items-center gap-2.5 animate-in fade-in slide-in-from-top-4 duration-200">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{notification}</span>
         </div>

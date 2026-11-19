@@ -3,15 +3,7 @@ import {
   Tractor,
   Plus,
   QrCode,
-  DollarSign,
-  TrendingUp,
-  Droplets,
-  Sun,
-  ShieldCheck,
-  FileText,
   Sparkles,
-  MapPin,
-  CheckCircle2,
   Play,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
@@ -223,13 +215,13 @@ export const FarmerDashboard: React.FC<{ setCurrentTab?: (tab: string) => void }
         <div className="space-y-1.5 max-w-2xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold bg-amber-500 text-slate-950">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Video Tutorials & AI Simulator</span>
+            <span>Interactive Video Tutorials &amp; AI Simulator</span>
           </div>
           <h3 className="text-lg font-extrabold text-white">
-            Kisan Smart Academy: Drone, Weather, Sensor & Crop Report Masterclasses
+            Kisan Smart Academy: Drone, Weather, Sensor &amp; Crop Report Masterclasses
           </h3>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Watch hands-on video tutorials on flying agricultural drones, reading Doppler weather radar, installing root-depth soil sensors, and deciphering soil moisture & NPK fertilizer demand with interactive AI-powered simulators.
+            Watch hands-on video tutorials on flying agricultural drones, reading Doppler weather radar, installing root-depth soil sensors, and deciphering soil moisture &amp; NPK fertilizer demand with interactive AI-powered simulators.
           </p>
         </div>
         <button
@@ -313,7 +305,7 @@ export const FarmerDashboard: React.FC<{ setCurrentTab?: (tab: string) => void }
               {farmerProducts.map((p) => (
                 <tr key={p.id} className="text-slate-700 dark:text-slate-300">
                   <td className="py-3 font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                    <img src={p.imageUrl} alt={p.title} className="w-8 h-8 rounded-lg object-cover" />
+                    <img src={p.imageUrl} alt={p.title} referrerPolicy="no-referrer" className="w-8 h-8 rounded-lg object-cover" />
                     <span>{p.title}</span>
                   </td>
                   <td className="py-3">{p.category}</td>

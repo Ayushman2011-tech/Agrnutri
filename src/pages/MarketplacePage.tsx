@@ -96,53 +96,54 @@ export const MarketplacePage: React.FC = () => {
   }, [products, searchQuery, selectedCategory, selectedLocation, organicOnly, isWholesaleMode, sortBy]);
 
   return (
-    <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      {/* Header Banner */}
-      <div className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white rounded-3xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="space-y-2 max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-950/60 text-emerald-300 border border-emerald-600/50">
-            <Leaf className="w-3.5 h-3.5" />
-            <span>Multi-Vendor Natural Farm Marketplace</span>
+    <div className="py-10 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* Marketplace Header */}
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="space-y-2.5 max-w-2xl">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span>Natural Farm Marketplace · Direct from Odisha Cultivators</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight">
-            Fresh, Traceable Produce Direct from Odisha’s Cultivators
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+            Fresh, Traceable Harvests
           </h1>
-          <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
-            Every item is sourced directly from verified farmers and bio-processors. View harvest dates,
-            lab-tested nutritional facts, and complete batch journeys with single-click QR verification.
+          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+            Sourced directly from verified cooperative farmers and processors. Inspect harvest dates,
+            accredited nutritional facts, and laboratory residue reports on every batch.
           </p>
         </div>
 
-        {/* Wholesale Switcher Pill */}
-        <div className="bg-emerald-950/80 p-4 rounded-2xl border border-emerald-600/60 text-xs shrink-0 w-full sm:w-auto">
-          <div className="flex items-center justify-between gap-4 mb-2">
+        {/* Wholesale Switcher Control */}
+        <div className="bg-slate-950/50 p-4 rounded-2xl border border-white/15 text-xs shrink-0 w-full sm:w-64">
+          <div className="flex items-center justify-between gap-4 mb-1.5">
             <div>
-              <div className="font-bold text-white text-xs">Wholesale B2B Mode</div>
-              <div className="text-[10px] text-emerald-300">Bulk pricing with MOQs</div>
+              <div className="font-bold text-white text-xs">Wholesale B2B Rates</div>
+              <div className="text-[11px] text-emerald-200/80">Bulk pricing with MOQs</div>
             </div>
             <button
               onClick={() => setIsWholesaleMode(!isWholesaleMode)}
-              className={`w-11 h-6 rounded-full p-1 transition-colors ${
-                isWholesaleMode ? 'bg-amber-400' : 'bg-slate-700'
+              aria-label="Toggle Wholesale B2B Mode"
+              className={`w-10 h-5 rounded-full p-0.5 transition-colors shrink-0 ${
+                isWholesaleMode ? 'bg-emerald-500' : 'bg-stone-700'
               }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-slate-900 transition-transform ${
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${
                   isWholesaleMode ? 'translate-x-5' : 'translate-x-0'
                 }`}
               />
             </button>
           </div>
-          <p className="text-[10px] text-emerald-200">
+          <p className="text-[11px] text-stone-400 leading-relaxed">
             {isWholesaleMode
-              ? 'Showing wholesale commercial rates for retailers & processors.'
-              : 'Showing standard retail prices for individual consumers.'}
+              ? 'Showing commercial wholesale rates for retailers and processors.'
+              : 'Showing standard retail prices for household orders.'}
           </p>
         </div>
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-[#131B19] p-4 rounded-xl border border-stone-200 dark:border-stone-800 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           {/* Search Box */}
           <div className="md:col-span-6 relative">

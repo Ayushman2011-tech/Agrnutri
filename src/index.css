@@ -4,12 +4,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #ffffff;
+    background-color: #f8fafc;
     color: #0f172a;
   }
 
   html.dark {
-    background-color: #0f172a;
+    background-color: #020617;
     color: #f1f5f9;
   }
 
@@ -36,16 +36,18 @@
   animation: spinSlow 12s linear infinite;
 }
 
-.no-scrollbar::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
   display: none;
 }
 
-.no-scrollbar {
+.no-scrollbar,
+.scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Custom quiet scrollbar */
+/* Custom sleek scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -56,10 +58,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.5);
 }

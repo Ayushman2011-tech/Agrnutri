@@ -1,26 +1,23 @@
 import React from 'react';
 import {
-  Sprout,
   QrCode,
-  Sparkles,
-  ShieldCheck,
   ArrowRight,
   Tractor,
   Factory,
   Store,
   Users,
-  Sun,
-  Droplets,
-  Award,
-  Leaf,
-  CheckCircle2,
-  TrendingUp,
-  MapPin,
-  Search,
   ShieldAlert,
+  Droplets,
+  Sun,
+  Sprout,
   Truck,
   Package,
-  Clock,
+  MapPin,
+  Sparkles,
+  ShieldCheck,
+  Leaf,
+  CheckCircle2,
+  Play,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
@@ -55,44 +52,148 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
     inspectBatch(batchId);
   };
 
+  const corridors = [
+    {
+      district: 'Koraput Highlands',
+      produce: 'Shade-Grown Arabica & Kala Jeera Rice',
+      detail: 'GI Certified · 1,000m Elevation',
+      category: 'Specialty Coffee',
+    },
+    {
+      district: 'Kandhamal Hills',
+      produce: 'Pure Curcumin Haldi & Dry Ginger',
+      detail: '5.2% Curcumin · Zero Chemical',
+      category: 'GI Spice',
+    },
+    {
+      district: 'Mayurbhanj Similipal',
+      produce: 'Similipal Wild Forest Raw Honey',
+      detail: 'Tribal Khadia Foraged · Raw',
+      category: 'Wild Honey',
+    },
+    {
+      district: 'Sambalpur & Bargarh',
+      produce: 'Field Vine Tomatoes & Desi Corn',
+      detail: 'Mahanadi Basin · High Lycopene',
+      category: 'Fresh Produce',
+    },
+    {
+      district: 'Nayagarh (Kantilo)',
+      produce: 'Kantilo Green Brinjal & Phula Badi',
+      detail: 'GI Protected · Heirloom Variety',
+      category: 'Heritage Crop',
+    },
+    {
+      district: 'Rayagada (Niyamgiri)',
+      produce: 'Dongria Kondh Hill Honey Pineapple',
+      detail: 'Brix 16.5° · Forest Mulched',
+      category: 'Orchard Fruit',
+    },
+    {
+      district: 'Nuapada Orchards',
+      produce: 'Sun-Ripened Desi Guavas (Amrud)',
+      detail: 'Tree Ripened · Vitamin C Rich',
+      category: 'Farm Fruit',
+    },
+    {
+      district: 'Keonjhar Plateau',
+      produce: 'Artisanal Hand-Rolled Phula Badi',
+      detail: 'Sun-Dried Urad · Zero Additives',
+      category: 'Heritage Pulse',
+    },
+  ];
+
+  const communities: {
+    role: UserRole;
+    title: string;
+    summary: string;
+    cta: string;
+    icon: React.ElementType;
+    accent: string;
+  }[] = [
+    {
+      role: 'Farmer',
+      title: 'Farmers & Growers',
+      summary:
+        'Crop yield forecasting, soil nutrient heat-maps, solar drip control, climate alerts, fair-price harvest listings, and batch QR generation.',
+      cta: 'Open Farmer Hub',
+      icon: Tractor,
+      accent: 'from-emerald-500 to-teal-600',
+    },
+    {
+      role: 'Producer',
+      title: 'Producers & Mills',
+      summary:
+        'Raw crop sourcing, NABL batch laboratory records, residue recovery into compost, and verified provenance passports.',
+      cta: 'Open Producer Unit',
+      icon: Factory,
+      accent: 'from-teal-500 to-cyan-600',
+    },
+    {
+      role: 'Retailer',
+      title: 'Retailers & Grocers',
+      summary:
+        'Direct wholesale ordering, minimum order quantity tracking, demand forecasting, and QR authenticity inspections.',
+      cta: 'Open Retail Portal',
+      icon: Store,
+      accent: 'from-amber-500 to-orange-600',
+    },
+    {
+      role: 'Consumer',
+      title: 'Conscious Consumers',
+      summary:
+        'Fresh seasonal vegetables, highland coffee, wild honey, and millets backed by harvest dates and 0.00 ppm residue tests.',
+      cta: 'Open Consumer View',
+      icon: Users,
+      accent: 'from-emerald-600 to-green-700',
+    },
+    {
+      role: 'Admin',
+      title: 'Platform Governance',
+      summary:
+        'Order stage management, agricultural fleet telemetry, direct farmer disbursements, and GI certification oversight.',
+      cta: 'Open Admin Console',
+      icon: ShieldAlert,
+      accent: 'from-slate-700 to-slate-900',
+    },
+  ];
+
   return (
-    <div className="space-y-20 pb-16">
-      {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/80 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-950 py-16 sm:py-24 border-b border-emerald-100/60 dark:border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
+    <div className="pb-20 space-y-16 sm:space-y-24">
+      {/* 1. Vibrant Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/90 via-white to-slate-50 dark:from-emerald-950/40 dark:via-slate-950 dark:to-slate-950 pt-14 sm:pt-20 pb-16 border-b border-emerald-100 dark:border-slate-800/80">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-teal-400/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto space-y-6">
-            {/* Super Kicker Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-              <span>AGRINUTRI FARM 2.0 · Founded by Ayushman Panda & Gourav Soren (Odisha)</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>AgriNutri Farm 2.0 · Smart Circular Food Ecosystem · Odisha</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] space-y-1">
+            {/* Exact 3 single-line hero headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.15] space-y-1">
               <span className="block sm:whitespace-nowrap">One Smart Platform.</span>
-              <span className="block sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:to-teal-300">
+              <span className="block sm:whitespace-nowrap bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent">
                 Four Connected Communities.
               </span>
               <span className="block sm:whitespace-nowrap">A More Sustainable Food Future.</span>
             </h1>
 
-            {/* Supporting Description */}
-            <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              AgriNutri Farm connects farmers, producers, retailers, and consumers through AI-powered
-              farming insights, agricultural e-commerce, verified product journeys, and sustainable resource
-              management.
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Founded by <strong className="text-slate-900 dark:text-white">Ayushman Panda</strong> (Sambalpur) &amp;{' '}
+              <strong className="text-slate-900 dark:text-white">Gourav Soren</strong> (Mayurbhanj). Connecting farmers, processors, retailers, and households through AI agronomy, solar IoT sensors, and verified QR farm-to-fork traceability.
             </p>
 
-            {/* Main CTA Buttons */}
+            {/* Primary CTA Buttons */}
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={() => {
                   setCurrentTab('marketplace');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-600/25 transition-all hover:scale-102 flex items-center gap-2"
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm shadow-lg shadow-emerald-600/25 transition-all inline-flex items-center gap-2"
               >
                 <span>Explore Marketplace</span>
                 <ArrowRight className="w-4 h-4" />
@@ -100,196 +201,103 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
 
               <button
                 onClick={() => setIsQrScannerOpen(true)}
-                className="px-5 py-3.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2"
+                className="px-5 py-3.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-emerald-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 font-bold text-sm shadow-sm transition-all inline-flex items-center gap-2"
               >
-                <QrCode className="w-4 h-4 text-emerald-600" />
+                <QrCode className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Scan Product QR</span>
               </button>
 
               <button
                 onClick={() => setIsAiModalOpen(true)}
-                className="px-5 py-3.5 rounded-xl bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800 font-bold text-xs sm:text-sm transition-all flex items-center gap-2"
+                className="px-5 py-3.5 rounded-2xl bg-slate-900 dark:bg-emerald-950 hover:bg-slate-800 dark:hover:bg-emerald-900 text-white border border-emerald-500/30 font-bold text-sm shadow-md transition-all inline-flex items-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-amber-500" />
+                <Sparkles className="w-4 h-4 text-amber-300" />
                 <span>Ask AgriNutri AI</span>
               </button>
             </div>
 
-            {/* Quick 4-Role Buttons */}
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
-              <span className="text-slate-400 font-medium mr-1">Join as:</span>
-              <button
-                onClick={() => handleRoleSelect('Farmer')}
-                className="px-3 py-1 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-semibold"
-              >
-                🌱 Farmer
-              </button>
-              <button
-                onClick={() => handleRoleSelect('Producer')}
-                className="px-3 py-1 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-semibold"
-              >
-                🏭 Producer
-              </button>
-              <button
-                onClick={() => handleRoleSelect('Retailer')}
-                className="px-3 py-1 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-semibold"
-              >
-                🏪 Retailer
-              </button>
-              <button
-                onClick={() => handleRoleSelect('Consumer')}
-                className="px-3 py-1 rounded-lg bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-semibold"
-              >
-                🥗 Consumer
-              </button>
+            {/* Quick Live Stats Strip */}
+            <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-left">
+                <div className="text-[10px] font-bold uppercase text-slate-400">Active Harvest Lots</div>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-0.5">{products.length} Lots</div>
+                <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">100% QR Verified</div>
+              </div>
+              <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-left">
+                <div className="text-[10px] font-bold uppercase text-slate-400">Live Soil Moisture</div>
+                <div className="text-2xl font-black text-teal-600 dark:text-teal-400 mt-0.5">{telemetry.soilMoisture}%</div>
+                <div className="text-[11px] text-slate-500">Pump: {telemetry.irrigationPumpStatus}</div>
+              </div>
+              <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-left">
+                <div className="text-[10px] font-bold uppercase text-slate-400">Chemical Residue</div>
+                <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-0.5">0.00 ppm</div>
+                <div className="text-[11px] text-slate-500">NABL Lab Certified</div>
+              </div>
+              <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-left">
+                <div className="text-[10px] font-bold uppercase text-slate-400">Solar Micro-Grid</div>
+                <div className="text-2xl font-black text-amber-500 mt-0.5">{telemetry.solarGenerationKw} kW</div>
+                <div className="text-[11px] text-slate-500">{telemetry.solarBatteryCharge}% Battery Stored</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Four Connected Communities (Role Cards) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-            Unified Circular Architecture
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-            Tailored Experiences for Every Stakeholder
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            Each community receives an intelligent dashboard designed specifically for their operational and
-            nutritional decisions.
+      {/* 2. Four Connected Communities */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              Connected Stakeholder Workspaces
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Tailored Hubs for Every Role in the Food Chain
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md">
+            Switch instantaneously between Farmer, Producer, Retailer, Consumer, and Admin dashboards with synced real-time state.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {/* Card 1: Farmer */}
-          <div
-            onClick={() => handleRoleSelect('Farmer')}
-            className="group cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all flex flex-col justify-between space-y-3"
-          >
-            <div className="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Tractor className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
-                Farmers & Growers
-              </h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                AI crop yield forecasting, soil sensor telemetry, solar drip pump control, direct fair-price crop listings & batch QR generator.
-              </p>
-            </div>
-            <div className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-1">
-              <span>Open Farmer Hub</span>
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
-
-          {/* Card 2: Producer */}
-          <div
-            onClick={() => handleRoleSelect('Producer')}
-            className="group cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:border-teal-500 transition-all flex flex-col justify-between space-y-3"
-          >
-            <div className="w-11 h-11 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-700 dark:text-teal-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Factory className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-teal-600 transition-colors">
-                Processors & Mills
-              </h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                Raw crop sourcing, batch lab tests, crop residue recovery into compost & certified provenance passports.
-              </p>
-            </div>
-            <div className="text-[11px] font-bold text-teal-600 dark:text-teal-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-1">
-              <span>Open Producer Unit</span>
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
-
-          {/* Card 3: Retailer */}
-          <div
-            onClick={() => handleRoleSelect('Retailer')}
-            className="group cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:border-amber-500 transition-all flex flex-col justify-between space-y-3"
-          >
-            <div className="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Store className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-amber-600 transition-colors">
-                Retailers & Grocers
-              </h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                Wholesale bulk ordering, MOQ tracking, AI demand forecasting & QR shipment authenticity inspections.
-              </p>
-            </div>
-            <div className="text-[11px] font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-1">
-              <span>Open Retail Portal</span>
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
-
-          {/* Card 4: Consumer */}
-          <div
-            onClick={() => handleRoleSelect('Consumer')}
-            className="group cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all flex flex-col justify-between space-y-3"
-          >
-            <div className="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Users className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
-                Conscious Consumers
-              </h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                Fresh organic vegetables, coffee, honey & millets. Scan QR for harvest date, nutrition profile & 0.00 ppm tests.
-              </p>
-            </div>
-            <div className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-1">
-              <span>Shop as Consumer</span>
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
-
-          {/* Card 5: Platform Admin */}
-          <div
-            onClick={() => handleRoleSelect('Admin')}
-            className="group cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 text-white p-5 rounded-2xl border border-slate-700 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between space-y-3"
-          >
-            <div className="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-400/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <ShieldAlert className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <h3 className="font-bold text-sm text-white group-hover:text-amber-400 transition-colors">
-                  Platform Admin
-                </h3>
-                <span className="text-[9px] bg-amber-400 text-slate-950 font-black px-1.5 py-0.2 rounded">
-                  ROOT
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                Command center, real-time order stage manager, drone fleet telemetry, DBT farmer finance & GI certification.
-              </p>
-            </div>
-            <div className="text-[11px] font-bold text-amber-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-1">
-              <span>Open Admin Command</span>
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
+          {communities.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.role}
+                onClick={() => handleRoleSelect(item.role)}
+                className="group text-left bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 flex flex-col justify-between space-y-5"
+              >
+                <div className="space-y-3">
+                  <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${item.accent} text-white flex items-center justify-center shadow-md`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    {item.summary}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center justify-between">
+                  <span>{item.cta}</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
+            );
+          })}
         </div>
       </section>
 
-      {/* 3. Featured Farm-Fresh Produce Marketplace */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              <Leaf className="w-4 h-4" />
-              <span>Certified Natural Harvest</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
-              Direct from Odisha’s Organic Fields
+      {/* 3. Featured Farm-Fresh Produce */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              Certified Direct Harvests
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Fresh from Odisha’s Organic Bio-Clusters
             </h2>
           </div>
           <button
@@ -297,9 +305,9 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
               setCurrentTab('marketplace');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 flex items-center gap-1"
+            className="text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5"
           >
-            <span>View All Products ({products.length})</span>
+            <span>Browse all {products.length} harvests</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -311,485 +319,337 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
         </div>
       </section>
 
-      {/* 4. Smart Food Intelligence Scanner & Comparator Banner (Feature 10) */}
+      {/* 4. Smart Food Intelligence & Lab Provenance Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-teal-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-emerald-500/30">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>INNOVATION 10: SMART FOOD INTELLIGENCE SCANNER</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                Complete Food Transparency, Not Just a QR Page
-              </h2>
-              <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed max-w-xl">
-                Scan any packaging barcode or pick from 26+ verified Odisha batches to inspect declared allergens, 0.00 ppm laboratory chemical assay certificates, exact farm GPS origin, storage cold-chain humidity, and compare verified nutritional profiles side-by-side.
-              </p>
-
-              {/* Note on food safety callout */}
-              <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-[11px] text-emerald-100 space-y-1">
-                <span className="font-bold text-amber-300 block">Verified Laboratory Records Assured:</span>
-                <span>A camera image alone cannot reliably establish exact nutrients, pesticide residues or food safety. All claims and chemical residue limits (0.00 ppm) displayed are backed by accredited FSSAI & NPOP lab assay records.</span>
-              </div>
-
-              <div className="pt-2 flex flex-wrap gap-3">
-                <button
-                  onClick={() => openFoodScanner()}
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-black text-xs shadow-lg transition-all flex items-center gap-2"
-                >
-                  <QrCode className="w-4 h-4 text-slate-950" />
-                  <span>Launch Food Intelligence Scanner</span>
-                </button>
-                <button
-                  onClick={() => openFoodScanner('AGRI-OD-2026-TOM')}
-                  className="px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all flex items-center gap-2"
-                >
-                  <span>Compare Nutrients Side-by-Side →</span>
-                </button>
-              </div>
+        <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-500/30 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Smart Food Intelligence &amp; NABL Laboratory Provenance</span>
             </div>
-
-            {/* Visual Intelligence Profile Preview Card */}
-            <div className="lg:col-span-5 bg-white/10 dark:bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-white/20 space-y-3.5 shadow-xl">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <span className="text-xs font-mono text-emerald-300 font-bold">BATCH #AGRI-OD-2026-TOM</span>
-                <span className="text-[10px] bg-emerald-400 text-emerald-950 font-extrabold px-2 py-0.5 rounded">
-                  0.00 ppm ZERO RESIDUE
-                </span>
-              </div>
-
-              {/* Ingredients & Allergens preview */}
-              <div className="space-y-1 text-xs">
-                <div className="flex justify-between text-slate-300">
-                  <span>Declared Allergens:</span>
-                  <span className="font-bold text-emerald-300">Gluten-Free · Dairy-Free · Nut-Free</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Testing Lab:</span>
-                  <span className="font-semibold text-white">OSFL Bhubaneswar (NABL Accredited)</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Glycemic Index:</span>
-                  <span className="font-semibold text-amber-300">GI: 15 (Ultra Low / Diabetic Safe)</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Storage Vault:</span>
-                  <span className="font-semibold text-teal-300">Solar Cold Packhouse (12.8°C / 88% RH)</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Eco-Score:</span>
-                  <span className="font-bold text-emerald-400">96/100 (Grade A+ Carbon Negative)</span>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-                <span className="text-slate-300 font-mono">Cert: NABL-OSFL-2026-90412</span>
-                <button
-                  onClick={() => openFoodScanner('AGRI-OD-2026-TOM')}
-                  className="text-emerald-300 font-bold hover:underline"
-                >
-                  Full Food Profile →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Live Order Tracking & AI Logistics Optimizer (Feature 11) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-emerald-500/20 relative overflow-hidden">
-          <div className="absolute -right-16 -top-16 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 shadow-sm">
-                <Truck className="w-3.5 h-3.5" />
-                <span>INNOVATION 11: AI LOGISTICS & DELIVERY OPTIMIZER</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                Dynamic Routing, Cold Chain Telemetry & Order Pooling
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-                Suggest efficient delivery routes across Odisha's corridors, monitor temperature-sensitive shipments in real time, predict arrival times with terrain ML models, and combine nearby orders to cut transportation costs.
-              </p>
-
-              {/* Progress Bar Demo */}
-              <div className="pt-2 space-y-3 max-w-xl">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-emerald-400 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                    Current Stage: In Transit · Cuttack-Bhubaneswar Expressway Hub
-                  </span>
-                  <span className="text-slate-400 font-mono text-[11px]">80% Complete</span>
-                </div>
-                <div className="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden p-0.5 border border-slate-700">
-                  <div className="bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-400 h-1.5 rounded-full w-4/5 animate-pulse" />
-                </div>
-                <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
-                  <span className="text-emerald-300">✓ Farm Confirmed</span>
-                  <span className="text-emerald-300">✓ Dawn Packed</span>
-                  <span className="text-emerald-300">✓ Dispatched</span>
-                  <span className="text-amber-300 font-bold">● In Transit</span>
-                  <span>Doorstep Delivery</span>
-                </div>
-              </div>
-
-              <div className="pt-3 flex flex-wrap gap-3">
-                <button
-                  onClick={() => {
-                    setCurrentTab('orders');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs shadow-lg transition-all flex items-center gap-2"
-                >
-                  <Package className="w-4 h-4" />
-                  <span>Open "Your Orders" Tracking Hub</span>
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentTab('logistics');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all flex items-center gap-2"
-                >
-                  <Truck className="w-4 h-4 text-emerald-400" />
-                  <span>AI Logistics & Route Optimizer Hub →</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Live Order Card Simulation */}
-            <div className="lg:col-span-5 bg-white/10 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs">
-                    #
-                  </div>
-                  <span className="font-mono text-xs font-bold text-white">ORD-98210 (Live Shipment)</span>
-                </div>
-                <span className="text-[10px] font-bold bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-500/40">
-                  In Transit
-                </span>
-              </div>
-
-              <div className="space-y-2.5 text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Place of Shipping:</span>
-                  <span className="font-semibold text-white">Koraput Agro Collective Hub, Odisha</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Shipping Date:</span>
-                  <span className="font-mono text-emerald-300">2026-10-10 (Dawn Dispatch)</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Carrier Vehicle:</span>
-                  <span className="font-semibold text-white">Odisha AgriCold Van OD-15-B-9901</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Expected Delivery:</span>
-                  <span className="font-bold text-amber-400">2026-10-12 · 02:30 PM</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Cold-Chain Temperature:</span>
-                  <span className="font-mono text-teal-300 font-bold">4.2°C (Optimal)</span>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-                <span className="text-slate-300 font-medium">Items: Koraput Coffee, Kala Jeera Rice</span>
-                <span className="text-emerald-400 font-bold">₹1,940 Total</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Odisha Natural Heritage Agro-Corridors (District Showcase) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              <MapPin className="w-4 h-4" />
-              <span>Odisha Bio-Diversity Corridors</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
-              Natural Heritage Produce by District
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Scan Any Produce QR for Instant Nutrition, Allergens &amp; Residue Reports
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-              From the mist-shrouded tribal highlands of Koraput to the pristine Similipal biosphere, explore GI-tagged organic treasures directly from indigenous growers.
+            <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+              Inspect verified nutritional breakdowns, farm GPS origin, harvest timestamps, and 0.00 ppm chemical residue lab reports across 26+ Odisha cooperative batches.
             </p>
-          </div>
-          <button
-            onClick={() => {
-              setCurrentTab('marketplace');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 flex items-center gap-1 shrink-0"
-          >
-            <span>Explore Entire 26+ Odisha Harvest</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {[
-            {
-              district: 'Koraput Highlands',
-              produce: 'Shade-Grown Arabica & Kala Jeera Rice',
-              highlight: 'GI Certified · 1,000m Elevation',
-              badge: 'Specialty Coffee',
-              color: 'from-amber-600 to-amber-800',
-            },
-            {
-              district: 'Kandhamal Hills',
-              produce: 'Pure Curcumin Haldi & Dry Ginger',
-              highlight: '5.2% High Curcumin · Zero Chemical',
-              badge: 'GI Tagged Spice',
-              color: 'from-yellow-600 to-amber-700',
-            },
-            {
-              district: 'Mayurbhanj Similipal',
-              produce: 'Similipal Wild Forest Raw Honey',
-              highlight: 'Tribal Khadia Foraged · Unpasteurized',
-              badge: 'Wild Honey',
-              color: 'from-amber-500 to-amber-700',
-            },
-            {
-              district: 'Sambalpur & Bargarh',
-              produce: 'Hybrid Field Tomatoes & Desi Corn',
-              highlight: 'Mahanadi Basin · High Lycopene',
-              badge: 'Fresh Veggies',
-              color: 'from-emerald-600 to-teal-700',
-            },
-            {
-              district: 'Nayagarh (Kantilo)',
-              produce: 'Crisp Kantilo Green Brinjal & Phula Badi',
-              highlight: 'GI Protected · Rare Thornless Variety',
-              badge: 'GI Vegetable',
-              color: 'from-purple-600 to-indigo-700',
-            },
-            {
-              district: 'Rayagada (Niyamgiri)',
-              produce: 'Dongria Kondh Hill Honey Pineapple',
-              highlight: 'Brix 16.5° Ultra Sweet · Forest Mulched',
-              badge: 'Tribal Fruit',
-              color: 'from-teal-600 to-emerald-700',
-            },
-            {
-              district: 'Nuapada Orchards',
-              produce: 'Sun-Ripened Desi Guavas (Amrud)',
-              highlight: 'Vitamin C Rich · Natural Tree Ripened',
-              badge: 'Farm Fruit',
-              color: 'from-emerald-500 to-green-700',
-            },
-            {
-              district: 'Keonjhar Plateau',
-              produce: 'Artisanal Hand-Rolled Phula Badi',
-              highlight: 'Sun-Dried Urad Fluff · Zero Additives',
-              badge: 'Heritage Pulse',
-              color: 'from-rose-600 to-pink-700',
-            },
-          ].map((corridor, idx) => (
-            <div
-              key={idx}
-              onClick={() => {
-                setCurrentTab('marketplace');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="group cursor-pointer p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 hover:border-emerald-500 shadow-xs hover:shadow-lg transition-all space-y-2 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-1">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
-                    {corridor.badge}
-                  </span>
-                  <MapPin className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-500 transition-colors" />
-                </div>
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white mt-1 group-hover:text-emerald-600 transition-colors">
-                  {corridor.district}
-                </h3>
-                <p className="text-xs text-slate-700 dark:text-slate-300 font-medium mt-0.5 line-clamp-1">
-                  {corridor.produce}
-                </p>
-                <div className="text-[11px] text-slate-500 mt-1">
-                  {corridor.highlight}
-                </div>
-              </div>
-              <div className="pt-2 flex items-center justify-between text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border-t border-slate-100 dark:border-slate-700/50">
-                <span>View Products</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-              </div>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <button
+                onClick={() => openFoodScanner()}
+                className="px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs shadow-lg transition-all inline-flex items-center gap-2"
+              >
+                <QrCode className="w-4 h-4" />
+                <span>Open Food Intelligence Scanner</span>
+              </button>
+              <button
+                onClick={() => openFoodScanner('AGRI-OD-2026-TOM')}
+                className="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all"
+              >
+                Inspect Sample Batch
+              </button>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
 
-      {/* 7. Founders Spotlight Section (Ayushman Panda & Gourav Soren) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-800 space-y-8">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                Pioneering Leadership from Odisha
+          <div className="lg:col-span-5 bg-slate-950/60 rounded-2xl p-5 border border-white/10 space-y-3 text-xs">
+            <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+              <span className="font-mono font-bold text-emerald-300">AGRI-OD-2026-TOM</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px]">
+                0.00 ppm PASS
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
-                Conceived by Ayushman Panda & Gourav Soren
-              </h2>
             </div>
-            <button
-              onClick={() => {
-                setCurrentTab('founders');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
-            >
-              <span>Full Founders Profile & Awards</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Owner 1 Card */}
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-4 items-start shadow-sm">
-              <img
-                src={ayushmanPhoto || '/images/ayushman_panda.jpg'}
-                alt="Ayushman Panda"
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover object-top shadow-md shrink-0 border-2 border-amber-400 ring-2 ring-amber-400/30"
-              />
-              <div className="space-y-1 flex-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
-                    {FOUNDERS[0].name}
-                  </h3>
-                  <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded">
-                    Co-Founder
-                  </span>
-                </div>
-                <div className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                  {FOUNDERS[0].hometown}, {FOUNDERS[0].state} · {FOUNDERS[0].title}
-                </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed pt-1">
-                  National awarded entrepreneur and strategic visionary. Master at creating high-scale websites
-                  and co-architect of AgriNutri V1.0 prototype.
-                </p>
-              </div>
+            <div className="flex justify-between">
+              <span className="text-slate-400">Accredited Lab</span>
+              <span className="font-semibold text-white">OSFL Bhubaneswar (NABL)</span>
             </div>
-
-            {/* Owner 2 Card */}
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-4 items-start shadow-sm">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-teal-400 via-teal-300 to-emerald-400 text-slate-950 flex items-center justify-center font-black text-xl shadow-md shrink-0 ring-2 ring-teal-400/30">
-                GS
-              </div>
-              <div className="space-y-1 flex-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
-                    {FOUNDERS[1].name}
-                  </h3>
-                  <span className="text-[10px] font-bold bg-teal-100 text-teal-800 px-1.5 py-0.2 rounded">
-                    Co-Founder
-                  </span>
-                </div>
-                <div className="text-xs text-teal-600 dark:text-teal-400 font-medium">
-                  {FOUNDERS[1].hometown}, {FOUNDERS[1].state} · {FOUNDERS[1].title}
-                </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed pt-1">
-                  Master at web designing & framework architecture. Ideation engine behind AgriNutri V1.0,
-                  turning indigenous tribal farm produce into accessible digital commerce.
-                </p>
-              </div>
+            <div className="flex justify-between">
+              <span className="text-slate-400">Declared Allergens</span>
+              <span className="font-semibold text-emerald-300">Gluten · Dairy · Nut Free</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-400">Packhouse Telemetry</span>
+              <span className="font-mono text-white">12.8°C · 88% RH</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-400">Glycemic Index</span>
+              <span className="font-mono text-amber-300 font-bold">15 (Low GI)</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. Smart Farming & Sustainability Teaser */}
+      {/* 5. Cold-Chain Logistics & Live Order Tracking */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center">
-              <Droplets className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Solar Drip Irrigation
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Conserving up to 40% agricultural groundwater. Current soil moisture telemetry registers{' '}
-              <strong className="text-emerald-600">{telemetry.soilMoisture}% (Optimal)</strong>.
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+              Cold-Chain Logistics &amp; Real-Time Order Tracking
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              AI Route Optimization, Refrigerated Transit &amp; Order Pooling
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Follow every order from dawn farm harvest to doorstep delivery while consolidating regional highway shipments across Odisha to cut transport emissions and keep perishables crisp at 4.2°C.
             </p>
-            <button
-              onClick={() => setCurrentTab('sustainability')}
-              className="text-xs font-bold text-emerald-600 hover:underline"
-            >
-              View Telemetry Hub →
-            </button>
+
+            <div className="space-y-2 pt-1 max-w-xl">
+              <div className="flex items-center justify-between text-xs font-bold">
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  In Transit · Cuttack–Bhubaneswar Expressway Hub
+                </span>
+                <span className="font-mono text-slate-500">80%</span>
+              </div>
+              <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
+                <div className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full w-4/5" />
+              </div>
+              <div className="flex justify-between text-[10px] font-semibold text-slate-400">
+                <span className="text-emerald-600 dark:text-emerald-400">Confirmed</span>
+                <span className="text-emerald-600 dark:text-emerald-400">Packed</span>
+                <span className="text-emerald-600 dark:text-emerald-400">Dispatched</span>
+                <span className="text-teal-600 dark:text-teal-400 font-bold">In Transit</span>
+                <span>Delivered</span>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap gap-3">
+              <button
+                onClick={() => {
+                  setCurrentTab('orders');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all inline-flex items-center gap-2"
+              >
+                <Package className="w-4 h-4" />
+                <span>Track Your Orders</span>
+              </button>
+              <button
+                onClick={() => {
+                  setCurrentTab('logistics');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold text-xs transition-all inline-flex items-center gap-2"
+              >
+                <Truck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Open Logistics Optimizer</span>
+              </button>
+            </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center">
-              <Sun className="w-5 h-5" />
+          <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-800/70 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 space-y-3 text-xs">
+            <div className="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-slate-700">
+              <span className="font-mono font-black text-slate-900 dark:text-white">ORD-98210</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 font-bold text-[10px]">
+                In Transit
+              </span>
             </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Solar Energy & Storage
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Micro-grid solar array generated{' '}
-              <strong className="text-amber-600">{telemetry.solarGenerationKw} kW</strong> with battery charge at{' '}
-              <strong className="text-amber-600">{telemetry.solarBatteryCharge}%</strong>.
-            </p>
-            <button
-              onClick={() => setCurrentTab('sustainability')}
-              className="text-xs font-bold text-amber-600 hover:underline"
-            >
-              Simulate Solar Pumps →
-            </button>
-          </div>
-
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 flex items-center justify-center">
-              <Sprout className="w-5 h-5" />
+            <div className="flex justify-between">
+              <span className="text-slate-500">Origin Hub</span>
+              <span className="font-semibold text-slate-900 dark:text-white">Koraput Agro Collective</span>
             </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Circular Waste Upcycling
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Over <strong className="text-teal-600">{telemetry.compostWasteDivertedKg.toLocaleString()} kg</strong>{' '}
-              of farm residue transformed into rich bio-fertilizer, offsetting {telemetry.co2OffsetTons}T CO₂.
-            </p>
-            <button
-              onClick={() => setCurrentTab('sustainability')}
-              className="text-xs font-bold text-teal-600 hover:underline"
-            >
-              Circular Reports →
-            </button>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Dispatch Date</span>
+              <span className="font-mono text-slate-800 dark:text-slate-200">2026-10-10 · 06:15 AM</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Carrier Unit</span>
+              <span className="font-mono text-slate-800 dark:text-slate-200">OD-15-B-9901 (AgriCold)</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Cabin Temp</span>
+              <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">4.2°C (Optimal)</span>
+            </div>
+            <div className="pt-2.5 border-t border-slate-200 dark:border-slate-700 flex justify-between font-bold">
+              <span className="text-slate-500">Koraput Coffee, Kala Jeera Rice</span>
+              <span className="text-slate-900 dark:text-white">₹1,940</span>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Farmer Video Academy Promo Banner on HomePage */}
-        <div className="mt-8 bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 text-white p-6 sm:p-8 rounded-3xl border border-emerald-500/40 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950">
-              <Sparkles className="w-3.5 h-3.5" />
-              Interactive Agronomy Learning
+      {/* 6. Odisha Heritage Bio-Corridors & Sustainability Telemetry */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              Regional Provenance Network
             </span>
-            <h3 className="text-xl font-extrabold text-white">
-              Farmer Interactive Video Academy: Drones, Weather & Sensors
-            </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Step-by-step masterclasses with animated flight HUDs, Doppler weather radar sweeps, soil moisture depth curves, and custom AI video generation.
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              GI-Tagged Harvest Corridors Across Odisha
+            </h2>
           </div>
           <button
             onClick={() => {
               setCurrentTab('tutorials');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs shadow-lg transition-all flex items-center gap-2 shrink-0"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow-sm transition-colors"
           >
-            <span>Explore Video Academy</span>
+            <Play className="w-3.5 h-3.5 fill-current" />
+            <span>Kisan Video Academy</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {corridors.map((corridor) => (
+            <button
+              key={corridor.district}
+              onClick={() => {
+                setCurrentTab('marketplace');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group text-left p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3"
+            >
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">
+                  <span>{corridor.category}</span>
+                  <MapPin className="w-3.5 h-3.5" />
+                </div>
+                <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">
+                  {corridor.district}
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-1">
+                  {corridor.produce}
+                </p>
+                <p className="text-[11px] text-slate-400">{corridor.detail}</p>
+              </div>
+              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1">
+                <span>Explore harvest</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* 3-Column Circular Sustainability Strip */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-teal-600 dark:text-teal-400">
+              <Droplets className="w-4 h-4" />
+              <span>Solar Drip Irrigation</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-white">
+              {telemetry.soilMoisture}% <span className="text-xs font-semibold text-slate-500">moisture</span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Conserving up to 45% agricultural groundwater with automated IoT drip schedules.
+            </p>
+            <button
+              onClick={() => setCurrentTab('sustainability')}
+              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-1"
+            >
+              Open Sustainability Ledger →
+            </button>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400">
+              <Sun className="w-4 h-4" />
+              <span>Solar Micro-Grid Array</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-white">
+              {telemetry.solarGenerationKw} kW <span className="text-xs font-semibold text-slate-500">· {telemetry.solarBatteryCharge}%</span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Clean off-grid generation powering field pumps and rural cold packhouses.
+            </p>
+            <button
+              onClick={() => setCurrentTab('smart-farming')}
+              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-1"
+            >
+              Open Smart Farming Telemetry →
+            </button>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <Sprout className="w-4 h-4" />
+              <span>Circular Bio-Upcycling</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-white">
+              {telemetry.compostWasteDivertedKg.toLocaleString()} kg <span className="text-xs font-semibold text-slate-500">· {telemetry.co2OffsetTons}T CO₂</span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Agricultural crop residue converted into vermicompost for next-season soil fertility.
+            </p>
+            <button
+              onClick={() => setCurrentTab('tutorials')}
+              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-1"
+            >
+              Open Farmer Video Academy →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Founders Spotlight */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              Leadership from Odisha
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Conceived by Ayushman Panda &amp; Gourav Soren
+            </h2>
+          </div>
+          <button
+            onClick={() => {
+              setCurrentTab('founders');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5"
+          >
+            <span>Read Founders Profile &amp; Origin Story</span>
             <ArrowRight className="w-4 h-4" />
           </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex gap-5 items-start">
+            <img
+              src={ayushmanPhoto || '/images/ayushman_panda.jpg'}
+              alt="Ayushman Panda"
+              referrerPolicy="no-referrer"
+              className="w-16 h-16 rounded-2xl object-cover object-top border-2 border-emerald-500/40 shrink-0 shadow-md"
+            />
+            <div className="space-y-1 flex-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-extrabold text-base text-slate-900 dark:text-white">
+                  {FOUNDERS[0].name}
+                </h3>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
+                  Co-Founder
+                </span>
+              </div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                {FOUNDERS[0].hometown}, {FOUNDERS[0].state} · {FOUNDERS[0].title}
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+                National awarded entrepreneur and strategic visionary. Architect of scalable web platforms and co-creator of the AgriNutri V1.0 prototype.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex gap-5 items-start">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-black text-xl shrink-0 shadow-md">
+              GS
+            </div>
+            <div className="space-y-1 flex-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-extrabold text-base text-slate-900 dark:text-white">
+                  {FOUNDERS[1].name}
+                </h3>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300">
+                  Co-Founder
+                </span>
+              </div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                {FOUNDERS[1].hometown}, {FOUNDERS[1].state} · {FOUNDERS[1].title}
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+                Web systems architect and co-creator of AgriNutri V1.0, focused on connecting indigenous tribal farm produce to transparent digital markets.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
