@@ -28,6 +28,7 @@ import { TraceabilityDetailModal } from './components/TraceabilityDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { AuthRoleModal } from './components/AuthRoleModal';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { CheckCircle2 } from 'lucide-react';
 
 const AppContent: React.FC = () => {
@@ -116,8 +117,10 @@ const AppContent: React.FC = () => {
 
 export default function App() {
   return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
+    <ErrorBoundary>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ErrorBoundary>
   );
 }

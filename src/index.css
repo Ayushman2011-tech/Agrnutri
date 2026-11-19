@@ -1,13 +1,25 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  html.dark {
+    background-color: #0f172a;
+    color: #f1f5f9;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: inherit;
+    color: inherit;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 }
 
@@ -22,6 +34,15 @@
 
 .animate-spin-slow {
   animation: spinSlow 12s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom quiet scrollbar */

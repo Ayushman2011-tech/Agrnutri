@@ -62,7 +62,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
         <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-4xl mx-auto space-y-6">
+          <div className="text-center max-w-5xl mx-auto space-y-6">
             {/* Super Kicker Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
@@ -70,12 +70,12 @@ export const HomePage: React.FC<HomePageProps> = ({ setCurrentTab }) => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-              One Smart Platform.{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:to-teal-300">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] space-y-1">
+              <span className="block sm:whitespace-nowrap">One Smart Platform.</span>
+              <span className="block sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:to-teal-300">
                 Four Connected Communities.
-              </span>{' '}
-              A More Sustainable Food Future.
+              </span>
+              <span className="block sm:whitespace-nowrap">A More Sustainable Food Future.</span>
             </h1>
 
             {/* Supporting Description */}

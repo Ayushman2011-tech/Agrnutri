@@ -29,6 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const [showNutriModal, setShowNutriModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [imgError, setImgError] = useState(false);
 
   const isFavorite = wishlist.includes(product.id);
   const activePrice = showWholesale ? product.wholesalePrice : product.price;
@@ -51,12 +52,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       >
         {/* Product Image Container */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
-          <img
-            src={product.imageUrl}
-            alt={product.title}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
+          {!imgError && product.imageUrl ? (
+            <img
+              src={product.imageUrl}
+              alt={product.title}
+              referrerPolicy="no-referrer"
+              onError={() => setImgError(true)}
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-emerald-50 via-teal-50 to-slate-100 dark:from-emerald-950/60 dark:via-slate-900 dark:to-slate-950 flex flex-col items-center justify-center p-4 text-center">
+              <ShieldCheck className="w-8 h-8 text-emerald-600 dark:text-emerald-400 mb-1.5" />
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-200 line-clamp-2">
+                {product.title}
+              </span>
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+                {product.category}
+              </span>
+            </div>
+          )}
 
           {/* Gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

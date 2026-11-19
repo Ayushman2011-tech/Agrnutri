@@ -46,19 +46,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false);
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
-  const navLinks = [
+  const primaryNavLinks = [
     { id: 'home', label: 'Home' },
     { id: 'marketplace', label: 'Marketplace' },
+    { id: 'smart-farming', label: 'Smart Farming' },
     { id: 'orders', label: 'Your Orders' },
+    { id: 'dashboard', label: `${activeRole} Hub` },
+  ];
+
+  const secondaryNavLinks = [
     { id: 'logistics', label: 'AI Logistics' },
     { id: 'sustainability', label: 'Sustainability & Score' },
     { id: 'tutorials', label: 'Farmer Academy' },
-    { id: 'smart-farming', label: 'Smart Farming' },
     { id: 'pricing', label: 'Membership' },
     { id: 'founders', label: 'Founders' },
-    { id: 'dashboard', label: `${activeRole} Hub` },
   ];
+
+  const navLinks = [...primaryNavLinks, ...secondaryNavLinks];
+  const isSecondaryActive = secondaryNavLinks.some((l) => l.id === currentTab);
 
   const roleOptions: { role: UserRole; icon: any; desc: string }[] = [
     { role: 'Farmer', icon: Tractor, desc: 'Cultivation & Harvest Listings' },
@@ -72,16 +79,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-emerald-100 dark:border-slate-800 transition-colors">
       {/* Top Banner Alert / Odisha Founders ticker */}
       <div className="bg-emerald-800 text-emerald-50 text-xs py-1.5 px-4 font-medium flex items-center justify-between">
-        <div className="max-w-7xl mx-auto w-full flex items-center justify-between text-[11px] sm:text-xs">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between text-[11px] sm:text-xs gap-4">
+          <div className="flex items-center gap-2 min-w-0 truncate">
+            <span className="truncate">
               <strong>AgriNutri Farm 2.0:</strong> Smart Circular Farm-to-Consumer Ecosystem · Founded by{' '}
               <strong className="underline decoration-emerald-400">Ayushman Panda</strong> (Sambalpur) &{' '}
               <strong className="underline decoration-emerald-400">Gourav Soren</strong> (Mayurbhanj)
             </span>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-emerald-200">
+          <div className="hidden lg:flex items-center gap-3 text-emerald-200 whitespace-nowrap shrink-0">
             <span>Odisha Bio-Cluster V2.0</span>
             <span>·</span>
             <span>GI-Certified Produce</span>
@@ -92,45 +98,43 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between gap-4 h-16">
           {/* Logo & Tagline */}
           <button
             onClick={() => {
               setCurrentTab('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 text-left group focus:outline-none"
+            className="flex items-center gap-2.5 text-left group focus:outline-none shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
-              <Sprout className="w-6 h-6 stroke-[2.2]" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform shrink-0">
+              <Sprout className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <div>
+            <div className="whitespace-nowrap">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
+                <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">
                   AgriNutri <span className="text-emerald-600 dark:text-emerald-400">Farm 2.0</span>
                 </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                  SMART
-                </span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-normal hidden sm:block">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-normal hidden xl:block">
                 From Smart Farming to Trusted Food
               </p>
             </div>
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link) => {
+          <nav className="hidden lg:flex items-center gap-1">
+            {primaryNavLinks.map((link) => {
               const isActive = currentTab === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => {
                     setCurrentTab(link.id);
+                    setIsMoreMenuOpen(false);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50'
                       : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-50 dark:hover:bg-slate-800/60'
@@ -140,10 +144,55 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
                 </button>
               );
             })}
+
+            {/* More Dropdown for secondary ecosystem modules */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setIsMoreMenuOpen((prev) => !prev);
+                  setIsRoleDropdownOpen(false);
+                }}
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap shrink-0 ${
+                  isSecondaryActive
+                    ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                }`}
+              >
+                <span>Explore</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+
+              {isMoreMenuOpen && (
+                <div
+                  className="absolute left-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 py-1.5 z-50"
+                  onClick={() => setIsMoreMenuOpen(false)}
+                >
+                  {secondaryNavLinks.map((link) => {
+                    const isActive = currentTab === link.id;
+                    return (
+                      <button
+                        key={link.id}
+                        onClick={() => {
+                          setCurrentTab(link.id);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className={`w-full text-left px-3.5 py-2.5 text-xs font-semibold transition-colors flex items-center justify-between ${
+                          isActive
+                            ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                        }`}
+                      >
+                        <span>{link.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Right Action Controls */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Role Switcher Pill */}
             <div className="relative">
               <button
